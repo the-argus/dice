@@ -3,6 +3,8 @@
 A hypothetical programming language for making videogames. Intended to meet the
 needs of both gameplay and engine programmers.
 
+The thing that makes this language idea somewhat unique is the [domain keywords](./DOMAIN_KEYWORDS.md).
+
 ## Goals of this repo
 
 - Write down my thoughts on programming languages in general
@@ -20,9 +22,9 @@ I want a language can be used seamlessly both when prototyping and
 doing gameplay code, and when writing highly performant engine code.
 C++ sort of achieves this by just having the features of a million different
 languages, which makes it usable at different abstraction levels. However,
-those abstraction levels often sort of fight each other (RAII discourages
+those abstraction levels often sort of fight each other RAII discourages
 allocating and initializing separately, for example. Big C++ wants you to
-std::make_unique but I can (and might want to) `malloc`).
+`std::make_unique` but I can (and might want to) `malloc`.
 
 I want Zig levels of compile time logic and type introspection.
 
@@ -54,7 +56,7 @@ or future maintainer.
 
 I want to treat language design as a game. Give developers encouragement to
 program in the simplest way possible but still provide complex features. An example
-of not this is Zig, which refuses to add complex type-constraining features such
+of **not** this is Zig, which refuses to add complex type-constraining features such
 as traits/interfaces because it encourages over-engineering and over-architecting
 and because such type constraining code can be difficult to maintain and
 understand. I think it also is an effort to keep things simple. I want to try to
@@ -130,10 +132,9 @@ of Qt or GObject. Arbitrary compile time code execution and introspection ala Zi
 
 There is a distinct difference between an application (designed for users first,
 then maintainers) and a library (designed for users first, then downstream
-programmers, then maintainers). The previous point may already address this, but
-it's worth pointing out. Maybe you should be able to declare that your artifact is
-a library or application, and get different compiler warnings/analysis depending
-on each?
+programmers, then maintainers). Maybe you should be able to declare that your
+artifact is a library or application, and get different compiler warnings/analysis
+depending on each?
 
 **Concern for backwards compatibility is proportional to the complexity of the
 language feature.**
