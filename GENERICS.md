@@ -8,11 +8,15 @@ Here is an example of a generic method which adds any two things which have the
 plus operator:
 
 ```zig
-const additionTrait = introspect fn(comptime T: type) bool {
+// needs introspect for access to @hasDecl and generic for access to accepting
+// types as arguments.
+const additionTrait = introspect generic fn(comptime T: type) bool {
     return @hasDecl(T, "$+");
 };
 
-// needs to be implicit for operator overloading and generic for recieving types
+// needs to be implicit for operator overloading and generic for receiving types
+// note that the `additionTrait` function must take only compile time known
+// parameters in order to be used in this context
 pub const addThings = implicit generic fn(thing1: infer additionTrait(T), thing2: T) T {
     // it is a compile error to use anything other than the + operator on these
     implicit {
