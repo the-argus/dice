@@ -4,29 +4,11 @@ A "domain keyword" is a keyword which specifies the feature needs of a block of
 code. For example, if you need raw pointer access in rust, you declare a block
 `unsafe`.
 
-The following keywords "bubble up," ie. they can only be called from contexts
-which also use that keyword:
+## Keywords
 
-- `implicit`
-- `heap`
-- `syscall`
-- `hack` (can't be exported, also)
-- `panics`
+A list of planned domains.
 
-The following keywords can be used and "wrapped," ie. used from contexts which
-don't share that keyword:
-
-- `unsafe`
-- `noborrow` (requires borrow-checked types to be moved in order to be used)
-- `recurse`
-- `async`
-- `generic`
-- `introspect`
-- `nosideeffects`
-- `immutableargs`
-- `pure`
-
-## Type decorators
+### Type decorators
 
 These are decorators which are special: they appear elsewhere but have special
 meaning when applied to types.
@@ -34,7 +16,7 @@ meaning when applied to types.
 `implicit`: When decorating functions in a type with `implicit`, you overload
 operators. Define functions such as `$+` to achieve this.
 
-## Block/Function decorators
+### Block/Function decorators
 
 These are decorators which must be applied to a block in order to get domain
 specific features, but also can be used on function signatures to force callers
@@ -68,7 +50,7 @@ block must be marked `syscall`. A `heap` block is also considered `syscall`. It
 is a warning for a `syscall` block to be called from an `implicit` block or
 vice versa.
 
-## Function decorators
+### Function decorators
 
 Domain keywords which are placed in function signatures and affect the contents
 of the whole function.
@@ -96,3 +78,27 @@ and cannot call `unsafe` functions or use `unsafe`.
 `hack`: able to use the `@mixin` builtin to inject code into library functions
 and access non-pub functions from a different dice project. Also able to call
 other `hack` functions. It is an error for a `hack` function to also be `export`.
+
+## Keyword behavior
+
+The following keywords "bubble up," ie. they can only be called from contexts
+which also use that keyword:
+
+- `implicit`
+- `heap`
+- `syscall`
+- `hack` (can't be exported, also)
+- `panics`
+
+The following keywords can be used and "wrapped," ie. used from contexts which
+don't share that keyword:
+
+- `unsafe`
+- `noborrow` (requires borrow-checked types to be moved in order to be used)
+- `recurse`
+- `async`
+- `generic`
+- `introspect`
+- `nosideeffects`
+- `immutableargs`
+- `pure`
