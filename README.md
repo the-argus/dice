@@ -89,6 +89,15 @@ annotations which declare the domain of code and give access to larger or
 different featuresets. These features should be encouraged to be used sparingly,
 when working in a limited domain where the feature is known to always be helpful.
 
+I want a language in which I can make a library which is C ABI compatible (or has
+some stable ABI) and know at load time that it doesnt have any code in it that
+could segfault. If dice is safe by default, this could be the case for making
+a library which uses none of the `unsafe` or `noborrow` keywords. Could be useful
+for things like editor plugins and LSP implementations, or even shells, where you
+need to let the user inject functionality into a program but you don't want your
+whole program to go down if the injected code segfaults. Basically: I want the
+option to not use separate processes in cases which normally would require them.
+
 ## Rules of Dice
 
 Goals for the language.
