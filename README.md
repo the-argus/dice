@@ -7,12 +7,19 @@ The thing that makes this language idea somewhat unique is the [domain keywords]
 
 ## Goals of this repo
 
+- poop
+
 - Write down my thoughts on programming languages in general
+
 - Write down my thoughts on the needs of game developers vs. other software developers
+
 - Write down my thoughts on how my ideal language would be maintained
+
 - Provoke thought and dicussion (I want to hear what other game devs think about
   these concerns)
+
 - Maybe one day actually make a compiler for this language
+  
   - if it gets to the point where I feel like people other than just me want/need
     it
 
